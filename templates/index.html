@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calorie Tracker</title>
+    <style>
+        body { font-family: Arial; padding: 20px; max-width: 600px; margin: auto; }
+        h1 { color: #4CAF50; }
+        input[type="text"], input[type="number"] {
+            padding: 8px; width: 100%; margin-bottom: 10px;
+        }
+        input[type="submit"], a.button {
+            padding: 10px 20px; background-color: #4CAF50; color: white;
+            border: none; text-decoration: none; display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>🥗 Calorie Tracker</h1>
+
+    <form action="/add" method="post">
+        <input type="text" name="food" placeholder="Enter food name" required>
+        <input type="number" name="calories" placeholder="Calories" required>
+        <input type="submit" value="Add Food">
+    </form>
+
+    <h2>📋 Food Log:</h2>
+    <ul>
+        {% for item in food_log %}
+            <li>{{ item.food }}: {{ item.calories }} cal</li>
+        {% endfor %}
+    </ul>
+
+    <h3>🔥 Total Calories: {{ total_calories }} cal</h3>
+
+    <a href="/reset" class="button">Reset</a>
+</body>
+</html>
